@@ -15,39 +15,42 @@ layout: example.hbs
     1. Proj4 and WKT definitions can be found at sites like http://epsg.io
     2. appropriate values to supply to the resolution and origin constructor options can be found in the ArcGIS Server RESTful tile server endpoint (ex: http://mapserv.utah.gov/arcgis/rest/services/BaseMaps/Terrain/MapServer)
   */
-  var crs = new L.Proj.CRS('EPSG:26912', '+proj=utm +zone=12 +ellps=GRS80 +datum=NAD83 +units=m +no_defs', {
-    origin: [-5120900, 9998100],
+   var crs = new L.Proj.CRS('EPSG:2154', '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ', {
+    origin: [579000.0, 7034000.0],
     resolutions: [
-      4891.96999883583,
-      2445.98499994708,
-      1222.99250010583,
-      611.496250052917,
-      305.748124894166,
-      152.8740625,
-      76.4370312632292,
-      38.2185156316146,
-      19.1092578131615,
-      9.55462890525781,
-      4.77731445262891,
-      2.38865722657904,
-      1.19432861315723,
-      0.597164306578613,
-      0.298582153289307
+      198.43789687579377,
+      171.97951062568794,
+      145.5211243755821,
+      119.06273812547626,
+      92.60435187537043,
+      66.1459656252646,
+      46.30217593768521,
+      26.458386250105836,
+      19.843789687579378,
+      13.229193125052918,
+      9.921894843789689,
+      6.614596562526459,
+      4.6302175937685215,
+      2.6458386250105836,
+      1.9843789687579376,
+	  1.3229193125052918,
+	  0.6614596562526459,
+	  0.26458386250105836
     ]
   });
 
   var map = L.map('map', {
     crs: crs
-  }).setView([40.381, -111.859], 5);
+  }).setView([646538.24, 6975916.48], 5);
 
   /*
     The min/maxZoom values provided should match the actual cache thats been published. This information can be retrieved from the service endpoint directly.
   */
   L.esri.tiledMapLayer({
-    url: 'http://mapserv.utah.gov/arcgis/rest/services/BaseMaps/Terrain/MapServer',
-    maxZoom: 14,
+    url: 'http://geo.somme.fr/arcgis/rest/services/ORTHO_2013_TUILAGE/MapServer',
+    maxZoom: 17,
     minZoom: 0,
     continuousWorld: true,
-    attribution: 'State of Utah'
+    attribution: 'CD80'
   }).addTo(map);
 </script>
